@@ -1,0 +1,126 @@
+:root {
+    --accent-color: #e0e0e0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.5;
+    background: radial-gradient(circle at center, #2c3e50 0%, #000000 100%);
+}
+
+.container {
+    width: 1000px;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    background-color: #000000;
+    color: #ffffff;
+    box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .column {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-weight: 300;
+    }
+}
+
+h2 {
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.volume-slider {
+    accent-color: var(--accent-color);
+}
+
+.keys-check input {
+    display: flex;
+    appearance: none;
+    background-color: #4b4b4b;
+    width: 3rem;
+    height: 1.5rem;
+    position: relative;
+    border-radius: 1rem;
+
+    &::before {
+        content: "";
+        width: 1.2rem;
+        aspect-ratio: 1 / 1;
+        background-color: #8c8c8c;
+        border-radius: inherit;
+        left: 5%;
+        align-self: center;
+        transition: all 0.2s ease;
+        position: absolute;
+    }
+
+    &:checked::before {
+        left: 55%;
+        background-color: var(--accent-color);
+    }
+}
+
+.piano-keys {
+    display: flex;
+    margin-top: 2rem;
+    user-select: none;
+
+    .key {
+        display: flex;
+        justify-content: center;
+        text-transform: uppercase;
+        border-radius: .3rem;
+        cursor: pointer;
+        position: relative;
+    }
+
+    .hide span {
+            display: none;
+        }
+
+    .key.white {
+        background: linear-gradient(#fff 90%, #eee);
+        border: 1px solid #000;
+        color: #000000;
+        height: 20rem;
+        flex-grow: 1;
+        z-index: 1;
+
+        &:active, 
+        &.active {
+            box-shadow: inset -5px 5px 10px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(#fff 0%, #eee 100%);
+        }
+    }
+
+    .key.black {
+        background: linear-gradient(#333, #000);
+        height: 11rem;
+        width: 2.5rem;
+        margin: 0 -1.25rem;
+        flex-shrink: 0;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        z-index: 2;
+
+        &:active,
+        &.active {
+            box-shadow: inset -5px 5px 10px rgba(255, 255, 255, 0.1);
+        }
+    }
+
+    span {        
+        position: absolute;
+        bottom: 10%;
+    }
+}
